@@ -8,6 +8,6 @@ public class RazasPelajes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.interacion_b);
+        setContentView(R.layout.zzz_viejo_interacion_b);
     }
 }
