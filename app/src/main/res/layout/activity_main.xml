@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="347dp"
+        android:layout_height="121dp"
+        android:background="@drawable/main_button"
+        android:text="Jugar"
+        android:textSize="35dp"
+        tools:layout_editor_absoluteX="812dp"
+        tools:layout_editor_absoluteY="406dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="347dp"
+        android:layout_height="121dp"
+        android:background="@drawable/main_button"
+        android:text="Reconocimiento"
+        android:textSize="35dp"
+        tools:layout_editor_absoluteX="812dp"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="348dp"
+        android:layout_height="259dp"
+        app:srcCompat="@drawable/cedica"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="333dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/roundcorner"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_help"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="56dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/roundcorner"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/baseline_settings_white_18dp"
+        tools:layout_editor_absoluteX="1110dp"
+        tools:layout_editor_absoluteY="56dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="499dp"
+        android:layout_height="110dp"
+        android:text="Razas y Pelajes"
+        android:textSize="70dp"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="191dp" />
+
+</android.support.constraint.ConstraintLayout>
