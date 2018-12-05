@@ -147,7 +147,7 @@
     </RadioGroup>
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/Level"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -166,19 +166,19 @@
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
         android:text="@string/nivel_2"
-        app:layout_constraintBaseline_toBaselineOf="@+id/switch2"
-        app:layout_constraintStart_toEndOf="@+id/switch2" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/Level"
+        app:layout_constraintStart_toEndOf="@+id/Level" />
 
     <Switch
-        android:id="@+id/switch4"
+        android:id="@+id/Sex"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:switchMinWidth="100dp"
         android:text="@string/masculina"
-        app:layout_constraintEnd_toEndOf="@+id/switch2"
-        app:layout_constraintStart_toStartOf="@+id/switch2"
-        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+        app:layout_constraintEnd_toEndOf="@+id/Level"
+        app:layout_constraintStart_toStartOf="@+id/Level"
+        app:layout_constraintTop_toBottomOf="@+id/Level" />
 
     <TextView
         android:id="@+id/textView9"
@@ -187,8 +187,8 @@
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
         android:text="@string/femenina"
-        app:layout_constraintBaseline_toBaselineOf="@+id/switch4"
-        app:layout_constraintStart_toEndOf="@+id/switch4" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/Sex"
+        app:layout_constraintStart_toEndOf="@+id/Sex" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
