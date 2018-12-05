@@ -27,4 +27,5 @@
     <string name="femenina">Femenina</string>
     <string name="radiobutton">RadioButton</string>
     <string name="cruza">Cruza</string>
+    <string name="placeholder_text">Placeholder Text</string>
 </resources>
