@@ -13,29 +13,32 @@ public class RazasPelajes extends AppCompatActivity {
 
     private void initializeSounds() {
         sounds = new HashMap<>();
-        sounds.put("horse", MediaPlayer.create(this, R.raw.horse_sound));
-        sounds.put("error", MediaPlayer.create(this, R.raw.error_sound));
-        sounds.put("correct", MediaPlayer.create(this, R.raw.success_sound));
+        sounds.put(getString(R.string.horse_sound_key), MediaPlayer.create(this, R.raw.horse_sound));
+        sounds.put(getString(R.string.error_sound_key), MediaPlayer.create(this, R.raw.error_sound));
+        sounds.put(getString(R.string.correct_sound_key), MediaPlayer.create(this, R.raw.success_sound));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initializeSounds();
-
         setContentView(R.layout.interaccion_b);
     }
 
+    private void playSound(String str) {
+        MediaPlayer sound = sounds.get(str);
+        if (sound != null) sound.start();
+    }
+
     public void playError(View view) {
-        sounds.get("error").start();
+        playSound(getString(R.string.error_sound_key));
     }
 
     public void playHorse(View view) {
-        sounds.get("horse").start();
+        playSound(getString(R.string.horse_sound_key));
     }
 
     public void playCorrect(View view) {
-        sounds.get("correct").start();
+        playSound(getString(R.string.correct_sound_key));
     }
 }

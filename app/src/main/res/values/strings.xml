@@ -32,4 +32,7 @@
     <string name="viewMode">viewMode</string>
     <string name="gameMode">gameMode</string>
     <string name="placeholder_text">Placeholder Text</string>
+    <string name="error_sound_key">error</string>
+    <string name="horse_sound_key">horse</string>
+    <string name="correct_sound_key">correct</string>
 </resources>
