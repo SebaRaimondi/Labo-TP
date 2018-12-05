@@ -31,4 +31,5 @@
     <string name="level">level</string>
     <string name="viewMode">viewMode</string>
     <string name="gameMode">gameMode</string>
+    <string name="placeholder_text">Placeholder Text</string>
 </resources>
