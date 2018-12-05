@@ -1,32 +1,41 @@
 package raimondirios.razasypelajes;
 
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class RazasPelajes extends AppCompatActivity {
-    final MediaPlayer horseSound = MediaPlayer.create(this, R.raw.horse_sound);
-    final MediaPlayer correctSound = MediaPlayer.create(this, R.raw.success_sound);
-    final MediaPlayer errorSound = MediaPlayer.create(this, R.raw.error_sound);
-    final int correct = 1;
+import java.util.HashMap;
+import java.util.Map;
 
+public class RazasPelajes extends AppCompatActivity {
+    private Map<String, MediaPlayer> sounds;
+
+    private void initializeSounds() {
+        sounds = new HashMap<>();
+        sounds.put("horse", MediaPlayer.create(this, R.raw.horse_sound));
+        sounds.put("error", MediaPlayer.create(this, R.raw.error_sound));
+        sounds.put("correct", MediaPlayer.create(this, R.raw.success_sound));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.zzz_viejo_interacion_b);
+
+        initializeSounds();
+
+        setContentView(R.layout.interaccion_b);
     }
 
     public void playError(View view) {
-        errorSound.start();
+        sounds.get("error").start();
     }
 
     public void playHorse(View view) {
-        horseSound.start();
+        sounds.get("horse").start();
     }
 
     public void playCorrect(View view) {
-        correctSound.start();
+        sounds.get("correct").start();
     }
 }
