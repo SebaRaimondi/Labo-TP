@@ -32,13 +32,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toRazasPelajes(View view) {
-        Intent intent = new Intent(this, RazasPelajes.class);
-        startActivity(intent);
-    }
-
-    public void toCruzas(View view) {
-        Intent intent = new Intent(this, Cruzas.class);
+    public void onJugar(View view) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        Intent intent = new Intent(this, RazasPelajes.class);;
+        switch (sharedPref.getInt(getString(R.string.minijuego),0)){
+            case 0:
+                intent = new Intent(this, RazasPelajes.class);
+                break;
+            case 1:
+                intent = new Intent(this, RazasPelajes.class);
+                break;
+            case 2:
+                intent = new Intent(this, Cruzas.class);
+                break;
+        }
         startActivity(intent);
     }
 }
