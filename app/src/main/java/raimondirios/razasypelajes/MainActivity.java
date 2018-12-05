@@ -11,11 +11,7 @@ import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+    private void initilizeSettings() {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(getString(R.string.sex), true);
@@ -25,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
         editor.putStringSet(getString(R.string.gameMode), new HashSet<String>());
         editor.putInt(getString(R.string.modo_interaccion), 1);
         editor.apply();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initilizeSettings();
+        setContentView(R.layout.activity_main);
     }
 
     public void toConfig(View view) {
