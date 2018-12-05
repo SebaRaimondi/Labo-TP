@@ -27,4 +27,8 @@
     <string name="femenina">Femenina</string>
     <string name="radiobutton">RadioButton</string>
     <string name="cruza">Cruza</string>
+    <string name="sex">sex</string>
+    <string name="level">level</string>
+    <string name="viewMode">viewMode</string>
+    <string name="gameMode">gameMode</string>
 </resources>

@@ -39,7 +39,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RadioGroup
-                        android:id="@+id/radioGroup4"
+                        android:id="@+id/ViewMode"
                         android:layout_width="306dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -65,36 +65,36 @@
                     </RadioGroup>
 
                     <CheckBox
-                        android:id="@+id/checkBox2"
+                        android:id="@+id/RazasCheckbox"
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:text="Razas"
-                        app:layout_constraintStart_toStartOf="@+id/radioGroup4"
-                        app:layout_constraintTop_toBottomOf="@+id/radioGroup4" />
+                        app:layout_constraintStart_toStartOf="@+id/ViewMode"
+                        app:layout_constraintTop_toBottomOf="@+id/ViewMode" />
 
                     <CheckBox
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
-                        android:id="@+id/checkBox3"
+                        android:id="@+id/PelajesCheckbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
                         android:text="Pelajes"
-                        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-                        app:layout_constraintTop_toTopOf="@+id/checkBox2" />
+                        app:layout_constraintStart_toEndOf="@+id/RazasCheckbox"
+                        app:layout_constraintTop_toTopOf="@+id/RazasCheckbox" />
 
                     <CheckBox
+                        android:id="@+id/CruzasCheckbox"
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
-                        android:id="@+id/checkBox6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
+                        android:layout_marginStart="25dp"
                         android:text="Cruzas"
-                        app:layout_constraintStart_toEndOf="@+id/checkBox3"
-                        app:layout_constraintTop_toTopOf="@+id/checkBox3" />
+                        app:layout_constraintStart_toEndOf="@+id/PelajesCheckbox"
+                        app:layout_constraintTop_toTopOf="@+id/PelajesCheckbox" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
@@ -120,6 +120,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RadioGroup
+                        android:id="@+id/Minijuego"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -181,6 +182,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RadioGroup
+                        android:id="@+id/ModoInteraccion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -236,7 +238,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Switch
-                        android:id="@+id/switch2"
+                        android:id="@+id/Level"
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
@@ -254,21 +256,21 @@
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
                         android:text="@string/nivel_2"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/switch2"
-                        app:layout_constraintStart_toEndOf="@+id/switch2" />
+                        app:layout_constraintBaseline_toBaselineOf="@+id/Level"
+                        app:layout_constraintStart_toEndOf="@+id/Level" />
 
                     <Switch
-                        android:id="@+id/switch4"
+                        android:id="@+id/Sex"
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:switchMinWidth="100dp"
                         android:text="@string/masculina"
-                        app:layout_constraintEnd_toEndOf="@+id/switch2"
+                        app:layout_constraintEnd_toEndOf="@+id/Level"
                         app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/switch2"
-                        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+                        app:layout_constraintStart_toStartOf="@+id/Level"
+                        app:layout_constraintTop_toBottomOf="@+id/Level" />
 
                     <TextView
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -278,8 +280,8 @@
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
                         android:text="@string/femenina"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/switch4"
-                        app:layout_constraintStart_toEndOf="@+id/switch4" />
+                        app:layout_constraintBaseline_toBaselineOf="@+id/Sex"
+                        app:layout_constraintStart_toEndOf="@+id/Sex" />
 
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
