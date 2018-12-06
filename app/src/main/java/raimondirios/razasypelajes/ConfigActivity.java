@@ -19,7 +19,7 @@ public class ConfigActivity extends AppCompatActivity {
     Switch sexSwitch;
     RadioGroup minijuegoRadio;
     RadioGroup viewModeRadio;
-    RadioGroup modoInteraccionRadio = (RadioGroup) findViewById(R.id.ModoInteraccion);
+    RadioGroup modoInteraccionRadio;
     HashMap<String, CheckBox> gameModeCheckBox;
 
     @Override
@@ -34,7 +34,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     private void setValues(){
 
-
+        modoInteraccionRadio = (RadioGroup) findViewById(R.id.ModoInteraccion);
         levelSwitch = findViewById(R.id.Level);
         sexSwitch = findViewById(R.id.Sex);
         minijuegoRadio = findViewById(R.id.Minijuego);

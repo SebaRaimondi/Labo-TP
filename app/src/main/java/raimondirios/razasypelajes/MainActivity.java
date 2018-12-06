@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        /*
         String json = getJSONFromRaw(R.raw.horses);
         try {
             JSONArray horses = new JSONArray(json);
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String image = horse.getString("image");
             }
         } catch (JSONException e) { e.printStackTrace(); }
+*/
     }
 
     public void toConfig(View view) {
