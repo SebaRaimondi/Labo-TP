@@ -1,6 +1,7 @@
 package raimondirios.razasypelajes;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +27,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import javax.net.ssl.HostnameVerifier;
+
+import raimondirios.razasypelajes.Helpers.JSONHelper;
+import raimondirios.razasypelajes.Horses.Horse;
+import raimondirios.razasypelajes.Horses.Padres;
 
 public class Cruzas extends Activity {
     private Map<String, MediaPlayer> sounds;
@@ -54,18 +61,10 @@ public class Cruzas extends Activity {
         question = findViewById(R.id.raceText);
         horses = new ArrayList<>();
         String json = getJSONFromRaw(R.raw.horses);
-        List<String> horse;
-        try {
-            JSONArray horsesJSON = new JSONArray(json);
-            for (int i = 0; i < horsesJSON.length(); i++) {
-                JSONObject horseJSON = horsesJSON.getJSONObject(i);
-                String raza = horseJSON.getString("raza");
-                String pelaje = horseJSON.getString("pelaje");
-                String image = horseJSON.getString("image");
-                horse= Arrays.asList(raza, pelaje, image);
-                horses.add(horse);
-            }
-        } catch (JSONException e) { e.printStackTrace(); }
+        Resources resources = getResources();
+
+        List<Horse> horse = JSONHelper.fromJSON(Horse.class, resources.openRawResource(R.raw.horses));
+        List<Padres> padres = JSONHelper.fromJSON(Padres.class, resources.openRawResource(R.raw.padres));
 
         newGame();
     }
