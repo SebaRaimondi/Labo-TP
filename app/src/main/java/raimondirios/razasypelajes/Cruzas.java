@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,9 +29,10 @@ import java.util.Random;
 public class Cruzas extends Activity {
     private Map<String, MediaPlayer> sounds;
     private ArrayList<ImageView> horsesViews;
-    TextView question;
+    ImageView question;
     int answer;
     ArrayList<List<String>> horses;
+    ArrayList<List<String>> parents;
 
     private void initializeSounds() {
         sounds = new HashMap<>();
@@ -51,8 +51,9 @@ public class Cruzas extends Activity {
         horsesViews.add((ImageView) findViewById(R.id.horseImg2));
         horsesViews.add((ImageView) findViewById(R.id.horseImg3));
         horsesViews.add((ImageView) findViewById(R.id.horseImg4));
-        question = findViewById(R.id.raceText);
+        question = findViewById(R.id.mainHorseImg);
         horses = new ArrayList<>();
+
         String json = getJSONFromRaw(R.raw.horses);
         List<String> horse;
         try {
@@ -66,6 +67,8 @@ public class Cruzas extends Activity {
                 horses.add(horse);
             }
         } catch (JSONException e) { e.printStackTrace(); }
+
+        parents = new ArrayList<>();
 
         newGame();
     }
@@ -94,8 +97,17 @@ public class Cruzas extends Activity {
 
         Random r = new Random();
         int answerIndex = r.nextInt(horsesViews.size());
-        question.setText(horses.get(answerIndex).get(0));
         answer = horsesViews.get(answerIndex).getId();
+        ArrayList<String> parentsOfAnswer = new ArrayList<>();
+        for (int i = 0; i < parents.size(); i++) {
+            // si la cruza es la raza
+            if (parents.get(i).get(0).equals(horses.get(answerIndex).get(0)))
+                // añadir imagen a imagenes de padres de la respuesta
+                parentsOfAnswer.add(parents.get(i).get(1));
+        }
+        int parentAnswerIndex = r.nextInt(parentsOfAnswer.size());
+        id = getResources().getIdentifier(parentsOfAnswer.get(parentAnswerIndex), "drawable", getPackageName());
+        question.setImageResource(id);
     }
 
     private void playSound(String str) {
