@@ -38,7 +38,7 @@ public class Cruzas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeSounds();
-        setContentView(R.layout.interaccion_b);
+        setContentView(R.layout.interaccion_c);
         horsesViews = new ArrayList<>();
         horsesViews.add((ImageView) findViewById(R.id.horseImg1));
         horsesViews.add((ImageView) findViewById(R.id.horseImg2));
@@ -55,22 +55,24 @@ public class Cruzas extends Activity {
     }
 
     private void newGame(){
-        Collections.shuffle(horses);
-
+        ArrayList<String> parentsOfAnswer = new ArrayList<>();
+        int answerIndex = 0;
+        Random r = new Random();
         int id;
+        while (parentsOfAnswer.size() == 0){
+            Collections.shuffle(horses);
+
+            answerIndex = r.nextInt(horsesViews.size());
+            for (int i = 0; i < parents.size(); i++) {
+                if (parents.get(i).getCruza().equals(horses.get(answerIndex).getRaza()))
+                    parentsOfAnswer.add(parents.get(i).getImg());
+            }
+        }
         for (int i = 0; i < horsesViews.size(); i++) {
             id = getResources().getIdentifier(horses.get(i).getImg(), "drawable", getPackageName());
             horsesViews.get(i).setImageResource(id);
         }
-
-        Random r = new Random();
-        int answerIndex = r.nextInt(horsesViews.size());
         answer = horsesViews.get(answerIndex).getId();
-        ArrayList<String> parentsOfAnswer = new ArrayList<>();
-        for (int i = 0; i < parents.size(); i++) {
-            if (parents.get(i).getCruza().equals(horses.get(answerIndex).getRaza()))
-                parentsOfAnswer.add(parents.get(i).getImg());
-        }
         int parentAnswerIndex = r.nextInt(parentsOfAnswer.size());
         id = getResources().getIdentifier(parentsOfAnswer.get(parentAnswerIndex), "drawable", getPackageName());
         question.setImageResource(id);

@@ -2,6 +2,7 @@ package raimondirios.razasypelajes;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,20 +44,21 @@ public class ConfigActivity extends AppCompatActivity {
         gameModeCheckBox.put(getString(R.string.pelajes), (CheckBox)findViewById(R.id.PelajesCheckbox));
         gameModeCheckBox.put(getString(R.string.cruzas), (CheckBox)findViewById(R.id.CruzasCheckbox));
 
-        levelSwitch.setChecked(getPreferences(Context.MODE_PRIVATE)
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.config),Context.MODE_PRIVATE);
+        levelSwitch.setChecked(preferences
                 .getBoolean(getString(R.string.level), false));
-        sexSwitch.setChecked(getPreferences(Context.MODE_PRIVATE)
+        sexSwitch.setChecked(preferences
                 .getBoolean(getString(R.string.sex), false));
-        minijuegoRadio.check(getPreferences(Context.MODE_PRIVATE)
+        minijuegoRadio.check(preferences
                 .getInt(getString(R.string.minijuego), R.id.razasYPelajes));
-        viewModeRadio.check(getPreferences(Context.MODE_PRIVATE)
+        viewModeRadio.check(preferences
                 .getInt(getString(R.string.viewMode), R.id.lista));
-        modoInteraccionRadio.check(getPreferences(Context.MODE_PRIVATE)
+        modoInteraccionRadio.check(preferences
                 .getInt(getString(R.string.modo_interaccion), R.id.interaccionB));
 
         for (CheckBox checkBox : gameModeCheckBox.values()) checkBox.setChecked(false);
 
-        Set<String> gameModes = getPreferences(Context.MODE_PRIVATE)
+        Set<String> gameModes = preferences
                 .getStringSet(getString(R.string.gameMode), new HashSet<String>());
 
         if (gameModes != null) for (String checkBoxKey : gameModes) {
@@ -66,7 +68,7 @@ public class ConfigActivity extends AppCompatActivity {
     }
 
     public void onAccept(View view) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.config),Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(getString(R.string.sex), sexSwitch.isChecked());
         editor.putBoolean(getString(R.string.level), levelSwitch.isChecked());

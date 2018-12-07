@@ -35,4 +35,5 @@
     <string name="error_sound_key">error</string>
     <string name="horse_sound_key">horse</string>
     <string name="correct_sound_key">correct</string>
+    <string name="config">config_preferences</string>
 </resources>

@@ -38,18 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
-        String json = getJSONFromRaw(R.raw.horses);
-        try {
-            JSONArray horses = new JSONArray(json);
-            for (int i = 0; i < horses.length(); i++) {
-                JSONObject horse = horses.getJSONObject(i);
-                String raza = horse.getString("raza");
-                String pelaje = horse.getString("pelaje");
-                String image = horse.getString("image");
-            }
-        } catch (JSONException e) { e.printStackTrace(); }
-*/
     }
 
     public void toConfig(View view) {
@@ -58,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onJugar(View view) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.config),Context.MODE_PRIVATE);
         Intent intent = new Intent(this, RazasPelajes.class);
+        System.out.println("config minijuego id: " + sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes));
+        System.out.println("Cruzas id: " + R.id.Cruzas);
         switch (sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes)){
             case R.id.razasYPelajes:
                 intent = new Intent(this, RazasPelajes.class);
