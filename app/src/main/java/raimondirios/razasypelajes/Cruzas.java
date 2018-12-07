@@ -1,38 +1,31 @@
 package raimondirios.razasypelajes;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import raimondirios.razasypelajes.Helpers.JSONHelper;
+import raimondirios.razasypelajes.Horses.Horse;
+import raimondirios.razasypelajes.Horses.Padres;
+
 public class Cruzas extends Activity {
     private Map<String, MediaPlayer> sounds;
     private ArrayList<ImageView> horsesViews;
     ImageView question;
     int answer;
-    ArrayList<List<String>> horses;
-    ArrayList<List<String>> parents;
+    List<Horse> horses;
+    List<Padres> parents;
 
     private void initializeSounds() {
         sounds = new HashMap<>();
@@ -52,38 +45,13 @@ public class Cruzas extends Activity {
         horsesViews.add((ImageView) findViewById(R.id.horseImg3));
         horsesViews.add((ImageView) findViewById(R.id.horseImg4));
         question = findViewById(R.id.mainHorseImg);
-        horses = new ArrayList<>();
 
-        String json = getJSONFromRaw(R.raw.horses);
-        List<String> horse;
-        try {
-            JSONArray horsesJSON = new JSONArray(json);
-            for (int i = 0; i < horsesJSON.length(); i++) {
-                JSONObject horseJSON = horsesJSON.getJSONObject(i);
-                String raza = horseJSON.getString("raza");
-                String pelaje = horseJSON.getString("pelaje");
-                String image = horseJSON.getString("image");
-                horse= Arrays.asList(raza, pelaje, image);
-                horses.add(horse);
-            }
-        } catch (JSONException e) { e.printStackTrace(); }
+        Resources resources = getResources();
 
-        parents = new ArrayList<>();
+        horses = JSONHelper.fromJSON(Horse.class, resources.openRawResource(R.raw.horses));
+        parents = JSONHelper.fromJSON(Padres.class, resources.openRawResource(R.raw.padres));
 
         newGame();
-    }
-
-    private String getJSONFromRaw(int res) {
-        InputStream is = getResources().openRawResource(res);
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-        try {
-            Reader reader = new BufferedReader(new InputStreamReader(is));
-            int n;
-            while ((n = reader.read(buffer)) != -1) writer.write(buffer, 0, n);
-            is.close();
-        } catch (IOException e) { e.printStackTrace(); }
-        return writer.toString();
     }
 
     private void newGame(){
@@ -91,7 +59,7 @@ public class Cruzas extends Activity {
 
         int id;
         for (int i = 0; i < horsesViews.size(); i++) {
-            id = getResources().getIdentifier(horses.get(i).get(2), "drawable", getPackageName());
+            id = getResources().getIdentifier(horses.get(i).getImg(), "drawable", getPackageName());
             horsesViews.get(i).setImageResource(id);
         }
 
@@ -100,10 +68,8 @@ public class Cruzas extends Activity {
         answer = horsesViews.get(answerIndex).getId();
         ArrayList<String> parentsOfAnswer = new ArrayList<>();
         for (int i = 0; i < parents.size(); i++) {
-            // si la cruza es la raza
-            if (parents.get(i).get(0).equals(horses.get(answerIndex).get(0)))
-                // añadir imagen a imagenes de padres de la respuesta
-                parentsOfAnswer.add(parents.get(i).get(1));
+            if (parents.get(i).getCruza().equals(horses.get(answerIndex).getRaza()))
+                parentsOfAnswer.add(parents.get(i).getImg());
         }
         int parentAnswerIndex = r.nextInt(parentsOfAnswer.size());
         id = getResources().getIdentifier(parentsOfAnswer.get(parentAnswerIndex), "drawable", getPackageName());
